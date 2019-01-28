@@ -4,7 +4,14 @@ namespace TicTacToe
 {
     class Program
     {
-        public static string playerTurn = "X";
+        public static string x = "x";
+        public static string y = "y";
+        public static int row = 0;
+        public static int column = 0;
+
+        public static bool gameWon = false;
+
+        public static string playerTurn = "x";
         public static string[][] board = new string[][]
         {
             new string[] {" ", " ", " "},
@@ -18,8 +25,13 @@ namespace TicTacToe
             {
                 DrawBoard();
                 GetInput();
+                placeMarkForPlayer();
+                
 
             } while (!CheckForWin() && !CheckForTie());
+
+            
+            Console.WriteLine("Press Enter to end.");
 
             // leave this command at the end so your program does not close automatically
             Console.ReadLine();
@@ -27,51 +39,146 @@ namespace TicTacToe
 
         public static void GetInput()
         {
+            
             Console.WriteLine("Player " + playerTurn);
             Console.WriteLine("Enter Row:");
-            int row = int.Parse(Console.ReadLine());
+            row = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter Column:");
-            int column = int.Parse(Console.ReadLine());
+            column = int.Parse(Console.ReadLine());
+            
+
+
         }
 
-        public static void PlaceMark(int row, int column)
+        public static void placeMarkForPlayer()
         {
-        // your code goes here
+            
+            PlaceMark();
+            if(CheckForWin())
+            {
+                printWinner();
+            }
+
+            else
+            {
+                setTogglePlayerTurn();
+            }
+            
+
+
+        }
+
+
+        public static void setTogglePlayerTurn()
+        {
+           playerTurn = (playerTurn == x) ? y : x;
+
+        }
+
+      
+        public static void PlaceMark()
+        {   
+            if(row <= 2 && column <=2)
+            {
+                board[row][column] = playerTurn;
+            }
+
+            else
+            {
+                throw new System.ArgumentException("Out of range value.");
+            }
+            
+        }
+
+        public static void printWinner()
+        {
+            Console.WriteLine("Player {0}", playerTurn + " Won!!! ");
+
         }
 
         public static bool CheckForWin()
         {
-            // your code goes here
+            
+            if(HorizontalWin() || VerticalWin () || DiagonalWin() )
+            {
+                gameWon = true;
+                return gameWon;
+                
+               
+            }
 
-            return false;
+            else
+            {
+             return gameWon;  
+            }
+
+            
         }
 
         public static bool CheckForTie()
         {
-            // your code goes here
 
-            return false;
+            return gameWon;
         }
         
         public static bool HorizontalWin()
         {
-        // your code goes here
+        bool win = false;
 
-        return false;
+        for(int i = 0; i < 3; i++)
+        {
+            if(board[i][0] == playerTurn && board[i][1] == playerTurn && board[i][2] == playerTurn)
+            {
+                win = true;
+                return win;
+                
+            }
+
+        }
+
+
+        return win;
         }
 
         public static bool VerticalWin()
         {
-            // your code goes here
+            bool win = false;
 
-            return false;
+            
+        for(int i = 0; i < 3; i++)
+        {
+            if(board[0][i] == playerTurn && board[1][i] == playerTurn && board[2][i] == playerTurn)
+            {
+                win = true;
+                return win;
+                
+            }
+
+        }
+
+            return win;
         }
 
         public static bool DiagonalWin()
         {
-            // your code goes here
+            bool win = false;
 
-            return false;
+            if(board[0][0] == playerTurn && board[1][1] == playerTurn && board[2][2]== playerTurn)
+            {
+                win = true;
+                return win;
+
+            }
+
+             else if(board[2][0] == playerTurn && board[1][1] == playerTurn && board[0][2]== playerTurn)
+            {
+                win = true;
+                return win;
+
+            }
+            
+
+            return win;
         }
 
         public static void DrawBoard()
