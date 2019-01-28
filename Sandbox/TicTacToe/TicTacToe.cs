@@ -30,6 +30,9 @@ namespace TicTacToe
 
             } while (!CheckForWin() && !CheckForTie());
 
+            
+            Console.WriteLine("Press Enter to end.");
+
             // leave this command at the end so your program does not close automatically
             Console.ReadLine();
         }
@@ -51,7 +54,16 @@ namespace TicTacToe
         {
             
             PlaceMark();
-            setTogglePlayerTurn();
+            if(CheckForWin())
+            {
+                printWinner();
+            }
+
+            else
+            {
+                setTogglePlayerTurn();
+            }
+            
 
 
         }
@@ -66,7 +78,22 @@ namespace TicTacToe
       
         public static void PlaceMark()
         {   
-            board[row][column] = playerTurn;
+            if(row <= 2 && column <=2)
+            {
+                board[row][column] = playerTurn;
+            }
+
+            else
+            {
+                throw new System.ArgumentException("Out of range value.");
+            }
+            
+        }
+
+        public static void printWinner()
+        {
+            Console.WriteLine("Player {0}", playerTurn + " Won!!! ");
+
         }
 
         public static bool CheckForWin()
@@ -76,7 +103,8 @@ namespace TicTacToe
             {
                 gameWon = true;
                 return gameWon;
-               // Console.WriteLine("Player {0}", playerTurn + " Won!!! ");
+                
+               
             }
 
             else
