@@ -8,6 +8,18 @@ namespace Sort
         {
            
             int[] myArray = {2,33,45,12,456,23,22,90,0,100};
+
+            Program.myBubbleSort(myArray);
+
+
+        } 
+
+
+        static public void myBubbleSort(int [] array1)
+        {
+                       
+            int[] myArray = new int [array1.Length];
+            myArray = array1;
             int temp = 0;
 
             for(int i = 0 ; i < myArray.Length -1 ; i++)
