@@ -6,7 +6,7 @@ namespace Variable_and_Operators
     {
         public static void Main(public string[args])
     {
-        int [] myArray =numberIntake();
+        int [] myArray = numberIntake();
 
 
         console.WriteLine(addOne(myArray[0], myArray[1]));

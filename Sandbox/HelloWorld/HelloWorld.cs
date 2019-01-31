@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using HelloWorld
 
 namespace HelloWorld
 {
@@ -18,6 +19,7 @@ namespace HelloWorld
             Console.WriteLine("What year were you born?");
             year = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Hello again {0}. So you are {1} years old, and you were born in the year {2}.", name, age, year);
+            Console.WriteLine("Thank you.")
 
         }
     }
