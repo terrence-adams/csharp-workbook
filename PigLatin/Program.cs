@@ -148,20 +148,20 @@ namespace PigLatin
 
             }
 
-            else{
 
-                for(int i = 0; i < s.Length; i++)
+
+            for(int i = 0; i < s.Length; i++)
+            {
+                if( findIndexFirstVowel(s[i]) == 0)
+                    newPGLS[i] = vowelFirstyay(s[i]);
+                
+                else
                 {
-                    if( findIndexFirstVowel(s[i]) == 0)
-                        newPGLS[i] = vowelFirstyay(s[i]);
-                    
-                    else
-                    {
-                        newPGLS[i] = makePigLatinWord(s[i]);
-                    }
-
+                    newPGLS[i] = makePigLatinWord(s[i]);
                 }
+
             }
+
             //newPGLS[newPGLS.Length -1] = s[s.Length -1];
 
             return newPGLS;
