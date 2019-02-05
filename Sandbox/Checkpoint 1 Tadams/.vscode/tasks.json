@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Checkpoint 1/Checkpoint 1.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
