@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace OOPS1
 {
@@ -6,7 +7,19 @@ namespace OOPS1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            Company Rainforest = new Company("Rainforest");
+            Rainforest.buildCompany();
+            Console.WriteLine(Rainforest.findLocation("tangerine"));
+            Rainforest.printCompanyManifest();
+            
+           
+
         }
+
+
+        
     }
+
+
 }
