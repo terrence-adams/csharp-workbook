@@ -6,7 +6,7 @@ namespace TowersOfHanoi
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Game myGame = new Game();
         }
     }
 }
