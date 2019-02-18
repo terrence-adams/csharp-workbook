@@ -5,9 +5,11 @@ namespace TowersOfHanoi
     {
        int _weight = 0;
        public int Weight{
-            get{
+            get
+            {
+                
                return _weight;
-           }
+            }
 
            private set
            {
@@ -20,6 +22,7 @@ namespace TowersOfHanoi
            Weight = myWeight;
 
        }
+
 
     }
 }

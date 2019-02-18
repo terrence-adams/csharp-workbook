@@ -12,13 +12,24 @@ namespace TowersOfHanoi
 
        public Tower()
        {
-
+           
 
        }
 
        public void addToBlocks()
        {
            
+       }
+
+       public string Blocks{
+
+           get{
+               foreach(Block b in blocks)
+               {
+                   Console.WriteLine(b.Weight);
+               }
+               return "";
+           }
        }
    
     }
