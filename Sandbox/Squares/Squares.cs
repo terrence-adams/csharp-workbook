@@ -17,11 +17,19 @@ namespace Squares
             foreach( int i in myCollection)
             {
 
-                sum = (int)Math.Pow(i,i);
+                sum += (int)Math.Pow(i,2);
 
             }
 
             return sum;
+
+        }
+
+
+        public int manualSquare(int myVal)
+        {
+
+            return myVal * myVal;
 
         }
     }

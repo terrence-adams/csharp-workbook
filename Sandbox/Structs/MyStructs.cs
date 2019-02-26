@@ -6,13 +6,13 @@ namespace Structs
 {
    public struct pointStruct
     {
-        public int x;
+        public int x ;
         public int y;
 
         public pointStruct(int myX, int myY)
         {
-            x = myX;
-            y = myY;
+            pointStruct.x = myX;
+            pointStruct.y = myY;
 
 
         }
