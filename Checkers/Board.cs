@@ -165,19 +165,35 @@ namespace Checkers
             int oldColumn = 0;
             int newRow = 0;
             int newColumn = 0;
+        
 
             Console.WriteLine("Enter pick up row.");
-            oldRow = int.Parse(Console.ReadLine());
+            //oldRow = int.Parse(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out oldRow);
             Console.WriteLine("Enter pick up column.");
-            oldColumn = int.Parse(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out oldColumn);
+            //oldColumn = int.Parse(Console.ReadLine());
+            
+            
 
             Console.WriteLine("Enter placement row.");
-            newRow = int.Parse(Console.ReadLine());
+            //newRow = int.Parse(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out newRow);
             Console.WriteLine("Enter placement column.");
-            newColumn = int.Parse(Console.ReadLine());
+            //newColumn = int.Parse(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out newColumn);
 
-            moveChecker(oldRow, oldColumn, newRow, newColumn);
-            reloadBoard();
+            if(oldRow < 8 && oldColumn < 8 && newRow < 8 && newColumn < 8 )
+            {
+                moveChecker(oldRow, oldColumn, newRow, newColumn);
+                reloadBoard();
+            }
+
+            else
+            {
+                Console.WriteLine("Invalid values.");
+            }
+           
             
 
         }
@@ -197,11 +213,16 @@ namespace Checkers
             placedChecker = SelectChecker(newRow,newColumn);
 
             //checks to make sure it is a valid checker and a valid move
-            if(Checkers.Contains(checkerMoved) && !Checkers.Contains(placedChecker))
+            if(Checkers.Contains(checkerMoved) && !Checkers.Contains(placedChecker) && newRow < 8 && newColumn < 8)
             {
                 int [] newPosition = new int[]{ newRow, newColumn};
                 checkerMoved.Position = newPosition;
                 RemoveChecker(oldRow, oldColumn);
+            }
+            else
+            {
+                Console.WriteLine("Invalid move attempted.");
+
             }
 
             
@@ -216,15 +237,22 @@ namespace Checkers
             Checker validationChecker;
 
             Console.WriteLine("Enter row to remove.");
-            oldRow = int.Parse(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out oldRow);
             Console.WriteLine("Enter column to remove.");
-            oldColumn = int.Parse(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out oldColumn);
             validationChecker = SelectChecker(oldRow, oldColumn);
+            
+           
 
             if(Checkers.Contains(validationChecker))
             {
                 RemoveChecker(oldRow,oldColumn);
                 reloadBoard();
+            }
+            else
+            {
+                Console.WriteLine("Invalid move attempted.");
+
             }
             
 
@@ -242,6 +270,16 @@ namespace Checkers
         
         public bool CheckForWin()
         {
+            if(Checkers.All(x => x.Color == "white"))
+            {
+                Console.WriteLine("The white player has won.");
+            }
+
+            else if(!Checkers.Exists(x => x.Color == "white"))
+            {
+                Console.WriteLine("The black player has won.");
+            }
+            
             return Checkers.All(x => x.Color == "white") || !Checkers.Exists(x => x.Color == "white");
         }
 

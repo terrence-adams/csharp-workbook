@@ -6,8 +6,8 @@ namespace Structs
 {
    public struct pointStruct
     {
-        public int x ;
-        public int y;
+        static public int x ;
+        static public int y;
 
         public pointStruct(int myX, int myY)
         {
@@ -28,12 +28,6 @@ namespace Structs
         Point point2 = new Point(4 , 3);
 
        pointStruct myPS = new pointStruct(5,5);
-
-       
-
-      
-
-            
 
 
     }
