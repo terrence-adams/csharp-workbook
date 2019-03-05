@@ -192,6 +192,7 @@ namespace Checkers
             else
             {
                 Console.WriteLine("Invalid values.");
+                reloadBoard();
             }
            
             
@@ -222,6 +223,8 @@ namespace Checkers
             else
             {
                 Console.WriteLine("Invalid move attempted.");
+                
+                
 
             }
 
@@ -252,6 +255,7 @@ namespace Checkers
             else
             {
                 Console.WriteLine("Invalid move attempted.");
+                reloadBoard();
 
             }
             
@@ -279,7 +283,7 @@ namespace Checkers
             {
                 Console.WriteLine("The black player has won.");
             }
-            
+
             return Checkers.All(x => x.Color == "white") || !Checkers.Exists(x => x.Color == "white");
         }
 
