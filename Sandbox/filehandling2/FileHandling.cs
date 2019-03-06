@@ -18,7 +18,7 @@ namespace filehandling2
             string fullPath = $"{myPath}\\{fullFileName}";
             
 
-           using(FileStream fs1 =   File.Create(fullPath))
+           using(FileStream fs1 =   File.Create(fullPath, FileMode.Create))
            using(StreamWriter sw = new StreamWriter(fs1))
            {
 
@@ -43,7 +43,7 @@ namespace filehandling2
                     sw1.WriteLine(msg2);
 
                 }
-
+            Console.WriteLine("The file at {0} was edited.", path);
 
             return path;
         }
