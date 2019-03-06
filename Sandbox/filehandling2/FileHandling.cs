@@ -1,6 +1,8 @@
 using System;
-using System.IO
-;
+using System.IO;
+using System.Text;
+using System.Collections.Generic;
+
 namespace filehandling2
 {
     class FileHandling
@@ -18,7 +20,7 @@ namespace filehandling2
             string fullPath = $"{myPath}\\{fullFileName}";
             
 
-           using(FileStream fs1 =   File.Create(fullPath, FileMode.Create))
+           using(FileStream fs1 =   File.Create(fullPath))
            using(StreamWriter sw = new StreamWriter(fs1))
            {
 
@@ -47,6 +49,50 @@ namespace filehandling2
 
             return path;
         }
+
+
+        public void numberOfWords(string filePath)
+        {
+            string [] wordsArray;
+            wordsArray = File.ReadAllLines(filePath, Encoding.UTF8);
+            int count = wordsArray.Length;
+            Console.WriteLine("Total count of words in the file is.{0}", count);
+            
+        }
+
+
+        public void longestWord(string filePath)
+        {
+            var file = File.ReadAllLines (filePath,Encoding.UTF8);
+            var wordList = new List <string>(file);
+            string longestWord = "";
+            int longest = 0;
+
+            foreach( string s in wordList)
+            {
+                if(s.Length > longest)
+                {
+                    longestWord = s;
+                    longest = s.Length;
+                }
+
+            }
+
+             Console.WriteLine("The longest word is {0}.",longestWord);
+
+        }
+
+
+        public void removeFile(string fileName)
+        {
+            File.Delete(fileName);
+            Console.WriteLine("The File has been deleted.");
+            //check to see if the file exists.
+
+
+        }
+
+        
 
     }
 }

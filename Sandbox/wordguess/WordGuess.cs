@@ -19,6 +19,7 @@ namespace wordguess
         {
             //var fs = new FileStream (@"./words_alpha.txt", FileMode.Open, FileAccess.Read);
             wordArray = File.ReadAllLines(@"./words_alpha.txt", Encoding.UTF8);
+            
 
         }
 
