@@ -11,6 +11,7 @@ namespace filehandling2
 
         private string msg1 = "This is a text file.";
         private string msg2 = "This is a text file, and I can edit it.";
+        //creates file 
         public string createFile(string myFileName)
         {
             string txt = ".txt";
@@ -30,13 +31,14 @@ namespace filehandling2
 
             }
 
-            Console.WriteLine("Done.");
+            Console.WriteLine("The file has been created.");
             return fullPath;
 
 
         }
 
 
+        //edits existing files using StreamWriter
         public string editFile(string path)
         {
 
@@ -62,6 +64,7 @@ namespace filehandling2
 
         }
 
+        //extra method for counting chars
         public void numberChars(string filePath)
         {
             string[] wordsArray;
@@ -105,9 +108,18 @@ namespace filehandling2
 
         public void removeFile(string fileName)
         {
-            File.Delete(fileName);
-            Console.WriteLine("The File has been deleted.");
-            //check to see if the file exists.
+            if(File.Exists(fileName))
+            {
+                File.Delete(fileName);
+                Console.WriteLine("The File has been deleted.");
+
+            }
+            else
+            {
+                Console.WriteLine("The file does not exist.");
+            }
+           
+            //add additional method to check to see if the file exists.
 
 
         }
