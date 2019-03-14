@@ -14,7 +14,7 @@ namespace ToDoApp
             while (!finished)
             {
                 myApp.buildApp();
-                Console.WriteLine("Would you like to restart? y/n");
+                Console.WriteLine("Would you like to do another task? y/n");
                 input = Console.ReadLine();
                 if (input.ToLower() == "n")
                 {
